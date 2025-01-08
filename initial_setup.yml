@@ -1,0 +1,11 @@
+---
+- name: Initial setup
+  hosts: routers
+  gather_facts: false
+  connection: netconf
+  tasks:
+    - name: Set provided HOSTNAME to device
+      junipernetworks.junos.junos_hostname:  
+        config:
+          hostname: "{{hostname}}"
+        state: merged
